@@ -1,3 +1,8 @@
+variable "oidc_token" {}
+variable "oidc_token_file_path" {}
+variable "oidc_request_token" {}
+variable "oidc_request_url" {}
+
 terraform {
   required_providers {
     azurerm = {
@@ -9,6 +14,22 @@ terraform {
 
 provider "azurerm" {
   features {}
+
+  subscription_id = "9ca13539-bff8-42c2-bad9-106ee8827ff4"
+  client_id       = "f188aeba-a2bd-4d61-8632-7126ae017e9a"
+  use_oidc        = true
+
+  # for GitHub Actions
+  oidc_request_token = var.oidc_request_token
+  oidc_request_url   = var.oidc_request_url
+
+  # for other generic OIDC providers, providing token directly
+  oidc_token = var.oidc_token
+
+  # for other generic OIDC providers, reading token from a file
+  oidc_token_file_path = var.oidc_token_file_path
+
+  tenant_id = "f9056c40-d204-4118-b01d-bb624708154c"
 }
 
 locals {

@@ -1,5 +1,6 @@
 variable "name_env" {
-    default = "rg_dev"
+  type = string
+  default = "rg_dev"
 
 }
 

@@ -1,5 +1,6 @@
 variable "name_env" {
   type = string
+  default = "rg-env"
 }
 
 variable "app_network_var" {
